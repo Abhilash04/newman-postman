@@ -8,8 +8,8 @@ postman_tests:
     entrypoint: ['']
   script:
     - newman --version
-    - npm install -g newman-reporter-html
-    - newman run TrainingDemo.postman_collection.json -e Production.postman_environment.json -d restful_booker.csv --reporters cli, html --reporter-html-export report.html
+    - npm install -g newman-reporter-htmlextra
+    - newman run TrainingDemo.postman_collection.json -e Production.postman_environment.json -d restful_booker.csv --reporters cli,html --reporter-html-export report.html
   artifacts:
     expire_in: 1 week
     when: always
