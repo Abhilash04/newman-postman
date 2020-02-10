@@ -8,6 +8,7 @@ postman_tests:
     entrypoint: ['']
   script:
     - newman --version
+    - newman run TrainingDemo.postman_collection.json -e Local.postman_environment.json -d restful_booker.csv
   # artifacts:
   #   expire_in: 1 week
   #   when: always
