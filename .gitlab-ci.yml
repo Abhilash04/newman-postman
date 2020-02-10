@@ -3,7 +3,9 @@ stages:
 
 postman_tests:
   stage: test
-  image: postman/newman
+  image:
+    name: postman/newman
+    entrypoint: ['']
   script:
     - newman --version
   # artifacts:
