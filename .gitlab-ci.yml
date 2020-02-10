@@ -4,14 +4,13 @@ stages:
 postman_tests:
   stage: test
   image:
-    name: postman/newman_alpine33
+    name: postman/newman
     entrypoint: ['']
   script:
     - newman --version
-    - npm install -g newman-reporter-htmlextra
-    - newman run TrainingDemo.postman_collection.json -e Production.postman_environment.json -d restful_booker.csv --reporters cli,html --reporter-html-export report.html
+    - newman run TrainingDemo.postman_collection.json -e Production.postman_environment.json -d restful_booker.csv --reporters cli,junit --reporter-junit-export report.xml
   artifacts:
     expire_in: 1 week
     when: always
-    paths:
-      - report.html
+    reports:
+      junit: report.xml
