@@ -1,0 +1,4 @@
+FirstName,LastName,TotalPrice,DepositPaid,CheckIn,CheckOut,AdditionalNeeds
+Rishabh,Singh,120,true,2020-03-03,2020-03-04,Breakfast
+Rishabh,Grover,240,true,2020-03-04,2020-03-05,Dinner
+Gurinder,Singh,360,false,2020-03-05,2020-03-06,Lunch

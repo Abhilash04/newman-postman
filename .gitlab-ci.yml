@@ -1,0 +1,13 @@
+stages:
+  - test
+
+postman_tests:
+  stage: test
+  image: postman/newman
+  script:
+    - newman --version
+  # artifacts:
+  #   expire_in: 1 week
+  #   when: always
+  #   paths:
+  #     - report.html

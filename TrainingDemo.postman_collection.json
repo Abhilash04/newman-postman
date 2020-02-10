@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "fad2e6da-c039-45f0-9c68-06d3c1d60746",
+		"name": "TrainingDemo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Create Booking",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "eeb9f6ff-d723-4368-9be7-e622faed4c16",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"",
+							"var tp = pm.variables.get(\"TotalPrice\");",
+							"var fn = pm.variables.get(\"FirstName\");",
+							"var ln = pm.variables.get(\"LastName\");",
+							"",
+							"pm.test(\"total price test \"+ tp, function () {",
+							"    pm.expect(jsonData.booking.totalprice).to.eql(tp);",
+							"});",
+							"",
+							"pm.test(\"firstname test \"+ fn, function () {",
+							"    pm.expect(jsonData.booking.firstname).to.eql(fn);",
+							"});",
+							"",
+							"pm.test(\"lastname test \"+ ln, function () {",
+							"    pm.expect(jsonData.booking.lastname).to.eql(ln);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\" : \"{{FirstName}}\",\n    \"lastname\" : \"{{LastName}}\",\n    \"totalprice\" : {{TotalPrice}},\n    \"depositpaid\" : {{DepositPaid}},\n    \"bookingdates\" : {\n        \"checkin\" : \"{{CheckIn}}\",\n        \"checkout\" : \"{{CheckOut}}\"\n    },\n    \"additionalneeds\" : \"{{AdditionalNeeds}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{rb_url}}/booking",
+					"host": [
+						"{{rb_url}}"
+					],
+					"path": [
+						"booking"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "password123",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "admin",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "d3369ba0-1f1b-4a22-be15-7736ce47a3a1",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "1f8a4190-dc4e-4002-ad2a-6ddefb3fa2d0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
